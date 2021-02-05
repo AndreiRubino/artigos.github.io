@@ -10,26 +10,25 @@ Podemos utilizar subquerys em instruções select, insert, update e delete. E ne
 
 Agora vamos esclarecer alguns conceitos e criar um cenário para aplicarmos nossas subquerys.
 
-Outer Query
+**Outer Query**
 
 É sempre a query externa, ou seja, a query da esquerda.
 
-Inner Query 
+**Inner Query**
 
 É sempre a query interna, ou seja, a query da direita.
 
-Subquerys Escalares (single-row)
+**Subquerys Escalares (single-row)**
 
 São subquerys que retornam apenas uma linha e uma coluna.
-
-Subquerys Correlacionadas (mutilple rows)
+**Subquerys Correlacionadas (mutilple rows)**
 
 São subquerys que se relacionam com a query externa, e são processados linha a linha.
 
 
 Para realizar nossos testes iremos utilizar o schema HR do banco XE.
 
-Iremos resolver 6 problemas, sendo eles:
+**Iremos resolver 6 problemas, sendo eles:**
 1)	Buscar os funcionários que pertencem ao departamento Sales, no entanto não sabemos o ID do departamento e/ou o mesmo pode ser alterado um dia.
 Para resolver esse problema iremos criar uma inner query single-row(retorna uma única linha e coluna), que será utilizada na clausula where pela outer query.
 ```
