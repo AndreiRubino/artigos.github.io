@@ -1,4 +1,4 @@
-# RESOLVENDO PROBLEMAS SIMPLES E COMPLEXOS COM SUBQUERY
+# Resolvendo Problemas Simples e Complexos com Subquery
 Este artigo tem como objetivo descrever as diversas formas de como podemos utilizar subquerys para resolver problemas simples e complexos. As formas abaixo são uteis no dia a dia de cada desenvolvedor/dba.
 
 
