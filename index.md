@@ -1,5 +1,7 @@
 # RESOLVENDO PROBLEMAS SIMPLES E COMPLEXOS COM SUBQUERY
-[Link](url) and ![Image](https://bn1301files.storage.live.com/y4pskm662y7Sphlq1voKLmdvIv6mvs7nv4FM0SXC1-0rjIC5KlIKRp6c4o6nZzxVjtNia4QtnpFv8X2qRRVkQHfTmyExTaQJM7Wt5NhU8hkcLFjv7dBRlGwy2ILVZffS1ZWk3fiPPiZM9IecaPtZiCkAc71BIneQJ2GTWY-qG149A_IYmzVvPmVRV8ppPdSG_DiVNb8w9Jbbo_o4R5saWTOw612r1ytuA_4qjo8eiM3_tQ/1.png?psid=1&width=542&height=283)
+![Image](https://bn1301files.storage.live.com/y4pskm662y7Sphlq1voKLmdvIv6mvs7nv4FM0SXC1-0rjIC5KlIKRp6c4o6nZzxVjtNia4QtnpFv8X2qRRVkQHfTmyExTaQJM7Wt5NhU8hkcLFjv7dBRlGwy2ILVZffS1ZWk3fiPPiZM9IecaPtZiCkAc71BIneQJ2GTWY-qG149A_IYmzVvPmVRV8ppPdSG_DiVNb8w9Jbbo_o4R5saWTOw612r1ytuA_4qjo8eiM3_tQ/1.png?psid=1&width=542&height=283)
+
+
 Este artigo tem como objetivo descrever as diversas formas de como podemos utilizar subquerys para resolver problemas simples e complexos. As formas abaixo são uteis no dia a dia de cada desenvolvedor/dba.
 
 
