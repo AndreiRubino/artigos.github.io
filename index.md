@@ -32,7 +32,7 @@ Para realizar nossos testes iremos utilizar o schema HR do banco XE.
 **Iremos resolver 6 problemas, sendo eles:**
 
 
-1.Buscar os funcionários que pertencem ao departamento Sales, no entanto não sabemos o ID do departamento e/ou o mesmo pode ser alterado um dia. 	
+1)Buscar os funcionários que pertencem ao departamento Sales, no entanto não sabemos o ID do departamento e/ou o mesmo pode ser alterado um dia. 	
 Para resolver esse problema iremos criar uma inner query single-row(retorna uma única linha e coluna), que será utilizada na clausula where pela outer query.
 ```
 SELECT * 
@@ -45,7 +45,7 @@ ORDER  BY E.EMPLOYEE_ID;
 ![Image](https://bn1301files.storage.live.com/y4p-Svy8hgENZ0qB5HyWeRUtupZDA_swBuV38-Y7hPSYrMM_5nK0Hq9cwQLD1BTfw8DD5ALst-jmILSzVEUOvBYk-p0HvVLjWAKlv0XxVf0cMZH-8fj_QqQjl9U15XsoroejkiDUwrbMQz97cEHJO-2sCNyo6Z1_47uRtiUvCrhhI8nG2mfkQszgO3JLspQ-Nw9/1.png?psid=1&width=1176&height=613)
 
 
-2. Buscar o nome do funcionário e do seu Manager desde que eles tenham o mesmo sobrenome.
+ 2)Buscar o nome do funcionário e do seu Manager desde que eles tenham o mesmo sobrenome.
 Nesse caso iremos criar uma inner query mutilple-row(podem retornar mais de uma linha e coluna), que será utilizada na clausula where pela outer query e irá garantir nossa regra definida, também iremos utilizar outra inner query no formato de coluna na instrução select.
 Com os funcionários já filtrados pela inner query da clausula where a subquery realiza a consulta com esses dados(funcionários) e retorna o nome e sobrenome de seu Manager.
 
@@ -69,7 +69,7 @@ ORDER  BY E.EMPLOYEE_ID;
 ![Image](https://bn1301files.storage.live.com/y4pKzwikNPJvoCYGiCOdtj_bL1KZM9hZt6aP7HyFXM_Ua06zeqgAaQE7qQETdPyZVHDBYVfeDSlqgzVTeM66LJb1JuQfh5QOBrn1m6-fNj7CcntQjHviCpp7mBBlfnXQTvGpBP5E8H_LavHOPvdJ_QDCDfeMilpN6iR7KsaIHDrMhl3AnuXf1sziFeA7g61LjshtXrjOcKQtDnZ7wj5p72lxv1txWFKc3QrC9BjsBEretg/2.png?psid=1&width=1231&height=613)
 
 
-3. Precisamos inserir em uma tabela nova chamada Promotion Employees os funcionários a quais trocaram de setor nos últimos 12 meses e que irão receber uma bonificação de 5% em seu salário. Aqui iremos utilizar a subquery em conjunto com a instrução Insert.
+ 3)Precisamos inserir em uma tabela nova chamada Promotion Employees os funcionários a quais trocaram de setor nos últimos 12 meses e que irão receber uma bonificação de 5% em seu salário. Aqui iremos utilizar a subquery em conjunto com a instrução Insert.
 
 Primeiro iremos criar a nova tabela visto que o schema HR não a possui.
 ```
@@ -107,7 +107,7 @@ Agora vamos verificar os registros inseridos.
 Ótimo, podemos ver que havia 9 funcionários que estavam dentro de nossas regras definidas
 
 
-4.	Precisamos listar o Nome, Cargo e Salário dos funcionários que possuem o salário maior do que a média dos salários de todos os funcionários, além disso, queremos também na mesma consulta a média de salário por cargos.
+4 )Precisamos listar o Nome, Cargo e Salário dos funcionários que possuem o salário maior do que a média dos salários de todos os funcionários, além disso, queremos também na mesma consulta a média de salário por cargos.
 
 Nesse Caso a inner query serve de fonte de dados para a outer query. A inner query é executada primeiro e a outer query realiza o select em cima dos dados retornados pela inner query. Ou seja, primeiramente é realizado o select que carrega o Nome, Cargo, Salário de todos os funcionários e a Média Salarial por cargo, e então nesse momento a outer query é executada e realiza a validação se o salário do funcionários é maior do que a média salarial de seu cargo, retornando apenas os funcionários a quais estão dentro desta regra.
  
@@ -130,7 +130,7 @@ WHERE  SUBQUERY.SALARY > SUBQUERY.MEDIA_SALARIO_CARGO;
 ![Image](https://bn1301files.storage.live.com/y4p06CXHQPGZyZyoQNKLJ3XpiVsfFxKvu0UkaaAatq6_TXFyOp6gcpxUK3X4hBfTo4P9b2YwajxzlWXseh5sw_sGLs163ZIrjBby8dzXbYDJjhD96cw1QSR_iR1DkXNB9HuW7m_TzqUFe6adQ5fB4T1_MpX50df48umaLnFykrnjNEMiYnCnZm63RMGUb-bm_rBJ1poVfLHfZF09Daeo0O39RbqbtClbqgaFe9iDboqafk/4.png?psid=1&width=1190&height=613)
 
 
-5.	Queremos descobrir os cargos que possuem a média salarial maior do que a média salarial do cargo Finance Manager(FI_MGR). Nesse caso utilizamos a subquery para comparação de valores com a clausula Having.
+5)	Queremos descobrir os cargos que possuem a média salarial maior do que a média salarial do cargo Finance Manager(FI_MGR). Nesse caso utilizamos a subquery para comparação de valores com a clausula Having.
 ```
 SELECT J.JOB_ID, 
        J.JOB_TITLE,
@@ -147,7 +147,7 @@ HAVING AVG(SALARY) > (SELECT AVG(SALARY)
 ![Image](https://bn1301files.storage.live.com/y4p7dHC7PGpvgErIYL48Jc00hejBxCCgCqIPzJvDRXTKe_9EFf3YhWGY02yomUeXDu4YmCTQwxfcEfRidQePNbn7ctfhURhFTfTziuSxF4TFOYV6zP93IpAueo4LJJxMlfxeO7gTek5ooCJl4R4E8q2gUB5rTf4iJq7-R4Bj041M1Bu0lcfHFWG2TicWdgoBdUMeg84IvH-hv8eiAZb_X7DANVRkZqPidrxtwRCQSrP4vs/5.png?psid=1&width=1229&height=613)
 
 
-6.	Precisamos atualizar o salário dos funcionários para o mesmo valor do funcionário que possui o maior valor do seu cargo, Para resolver esse problema iremos criar uma inner query, que será utilizada na clausula SET pela outer query.
+6 )Precisamos atualizar o salário dos funcionários para o mesmo valor do funcionário que possui o maior valor do seu cargo, Para resolver esse problema iremos criar uma inner query, que será utilizada na clausula SET pela outer query.
 ```
 UPDATE HR.EMPLOYEES E 
 SET    SALARY = (SELECT MAX(SALARY) 
