@@ -1,37 +1,60 @@
-## Welcome to GitHub Pages
+Este artigo tem como objetivo descrever as diversas formas de como podemos utilizar subquerys para resolver problemas simples e complexos. As formas abaixo são uteis no dia a dia de cada desenvolvedor/dba.
 
-You can use the [editor on GitHub](https://github.com/AndreiRubino/artigos.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+Uma subquery é uma instrução SELECT que está condicionado à outra instrução SQL.
+A subquery é uma instrução muito versátil a qual pode ser utilizada em diversos cenários e servem geralmente para resolver problemas que teriam que ser feitas com 2 ou mais consultas.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Podemos utilizar subquerys em instruções select, insert, update e delete. E nessas instruções podemos fazer o uso de subquery em diversas clausulas como a clausula into, values, set, where, having, o Oracle também permite utilizarmos a subquery tanto  ao lado direito quanto esquerdo do operador =. Show, não é?
 
-```markdown
-Syntax highlighted code block
+Agora vamos esclarecer alguns conceitos e criar um cenário para aplicarmos nossas subquerys.
 
-# Header 1
-## Header 2
-### Header 3
+Outer Query 
+É sempre a query externa, ou seja, a query da esquerda.
 
-- Bulleted
-- List
+Inner Query 
+É sempre a query interna, ou seja, a query da direita.
 
-1. Numbered
-2. List
+Subquerys Escalares (single-row)
+São subquerys que retornam apenas uma linha e uma coluna.
 
-**Bold** and _Italic_ and `Code` text
+Subquerys Correlacionadas (mutilple rows)
+São subquerys que se relacionam com a query externa, e são processados linha a linha.
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+Para realizar nossos testes iremos utilizar o schema HR do banco XE.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/AndreiRubino/artigos.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Iremos resolver 6 problemas, sendo eles:
 
-### Support or Contact
+1)	Buscar os funcionários que pertencem ao departamento Sales, no entanto não sabemos o ID do departamento e/ou o mesmo pode ser alterado um dia.
+Para resolver esse problema iremos criar uma inner query single-row(retorna uma única linha e coluna), que será utilizada na clausula where pela outer query.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+SELECT * 
+FROM   HR.EMPLOYEES E 
+WHERE  E.DEPARTMENT_ID = (SELECT DEPARTMENT_ID 
+                          FROM   HR.DEPARTMENTS D 
+                          WHERE  UPPER(D.DEPARTMENT_NAME) = 'SALES') 
+ORDER  BY E.EMPLOYEE_ID;
+
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+
+ We are a family owned and operated business.
+We are a family owned and operated business.
