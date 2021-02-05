@@ -33,7 +33,7 @@ WHERE  E.DEPARTMENT_ID = (SELECT DEPARTMENT_ID  FROM   HR.DEPARTMENTS D
                              WHERE UPPER(D.DEPARTMENT_NAME) = 'SALES') 
 ORDER  BY E.EMPLOYEE_ID;
 ```
-![Image](https://bn1301files.storage.live.com/y4pskm662y7Sphlq1voKLmdvIv6mvs7nv4FM0SXC1-0rjIC5KlIKRp6c4o6nZzxVjtNia4QtnpFv8X2qRRVkQHfTmyExTaQJM7Wt5NhU8hkcLFjv7dBRlGwy2ILVZffS1ZWk3fiPPiZM9IecaPtZiCkAc71BIneQJ2GTWY-qG149A_IYmzVvPmVRV8ppPdSG_DiVNb8w9Jbbo_o4R5saWTOw612r1ytuA_4qjo8eiM3_tQ/1.png?psid=1&width=542&height=283)
+![Image](https://bn1301files.storage.live.com/y4p-Svy8hgENZ0qB5HyWeRUtupZDA_swBuV38-Y7hPSYrMM_5nK0Hq9cwQLD1BTfw8DD5ALst-jmILSzVEUOvBYk-p0HvVLjWAKlv0XxVf0cMZH-8fj_QqQjl9U15XsoroejkiDUwrbMQz97cEHJO-2sCNyo6Z1_47uRtiUvCrhhI8nG2mfkQszgO3JLspQ-Nw9/1.png?psid=1&width=1176&height=613)
 
 2. Buscar o nome do funcionário e do seu Manager desde que eles tenham o mesmo sobrenome.
 Nesse caso iremos criar uma inner query mutilple-row(podem retornar mais de uma linha e coluna), que será utilizada na clausula where pela outer query e irá garantir nossa regra definida, também iremos utilizar outra inner query no formato de coluna na instrução select.
@@ -125,6 +125,7 @@ HAVING AVG(SALARY) > (SELECT AVG(SALARY)
                       FROM   HR.EMPLOYEES E2
                       WHERE JOB_ID = 'FI_MGR');
 ```
+![Image](https://bn1301files.storage.live.com/y4p7dHC7PGpvgErIYL48Jc00hejBxCCgCqIPzJvDRXTKe_9EFf3YhWGY02yomUeXDu4YmCTQwxfcEfRidQePNbn7ctfhURhFTfTziuSxF4TFOYV6zP93IpAueo4LJJxMlfxeO7gTek5ooCJl4R4E8q2gUB5rTf4iJq7-R4Bj041M1Bu0lcfHFWG2TicWdgoBdUMeg84IvH-hv8eiAZb_X7DANVRkZqPidrxtwRCQSrP4vs/5.png?psid=1&width=1229&height=613)
 
 6)	Precisamos atualizar o salário dos funcionários para o mesmo valor do funcionário que possui o maior valor do seu cargo, Para resolver esse problema iremos criar uma inner query, que será utilizada na clausula SET pela outer query.
 ```
@@ -133,3 +134,7 @@ SET    SALARY = (SELECT MAX(SALARY)
                  FROM   HR.EMPLOYEES E2 
                  WHERE  E2.JOB_ID = E.JOB_ID);
 ```                 
+![Image](https://bn1301files.storage.live.com/y4pzjEUD-Hblc7BJQy0QXy2UTwElKIspMrS3lxnlDSBXlnZSYh2wpKYiJsmBTbLiAldZCmo7ekP3OrpyFaReWmkWS6NdySN7PMhBq7obhgRy_09DPDWxWEWjk2bzZX_q9LI08Y2Mgapozeppm03oCrqWHlC_pQNgZh7B9glDLSkYh7LWHyyZ8zfG9pjcBuCs_GirP_4lca8Bg464SqW2IYg_Hi6XIHSvJFE_oRDoSA9ZLE/6.png?psid=1&width=1227&height=613)
+
+Vamos verificar os funcionários e seus salários.
+![Image](https://bn1301files.storage.live.com/y4peTfcMV7vjv5KiicTMCCHUVQxwdWdMYqaZq_vhlG-5B_JjqaZKYLfRk-rcQNfiBE_zVHO9rPoyNH99Wntx9FVgCmfxZOOwQCHAAVJjbGgfHboK7R16lybqXBuROJJztHC5aaJdJNyCVaE3Fzgd47sKiFDz_gfubxwJca3COfGRXuU4QUT_C-hWgRWjPtHfn4djmuK0txYSNrYudkdTXJ9UIF8LLgyfEduQMLwmZ8Vbeg/6-2.png?psid=1&width=1235&height=613)
