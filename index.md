@@ -69,7 +69,7 @@ CREATE TABLE HR.PROMOTION_EMPLOYEES (
 	, CONSTRAINT PRM_EMP_EMP_FK FOREIGN KEY(EMPLOYEE_ID) REFERENCES HR.EMPLOYEES(EMPLOYEE_ID)
 );
 ```
-![Image](https://bn1301files.storage.live.com/y4pbJnnvipKhrVI0DoFwwaa9OgN0tHGXIaRDQXK18kc_JwfsJ4BJI5leeAnb3Eco2YlgIYz9qGJHqRX05CVUODYK7Xcyh05mioXC585RfIAwd9UX5Yi9dmA2bqGFtCHeku3lk-NlDQeZZr_ZAI1Bmwfr9PLGExCm3tshu-QqVrJQqWo3w0mobeQyTlm1kvB6YW3w023BENrVXinJgjwml-I-jpDJKL2XvFLU716VxnCaS0/3.png?psid=1&width=1183&height=613)
+![Image](https://bn1301files.storage.live.com/y4puTKUrjeJD-JHKmxzwEFX229NUEXB3QkW6xl63Hz-O4RF4tXN8Ocgxis82Cl8CL9BJa5sJAOGGzcgRF8h1qOjj3Wan5IWv2zby6jGs8oe8boxmZFWmQgKzSE6CEbD0m096uSd_GDcPqRCknJLBUMfaOTsXUxljr7zJPs1eN7zIfcXHpgGWDC9baKjN0hTK4vx5LvdpqsWP3yXpCk2MDfcWvH3XX_ywY59qw0FendQmdE/3-2.png?psid=1&width=1187&height=613)
 
 Agora iremos fazer o insert com subselect obedecendo às regras definidas, que são funcionários a qual trocaram de setor nos últimos 12 meses.
 ```
@@ -83,10 +83,9 @@ INSERT INTO HR.PROMOTION_EMPLOYEES (EMPLOYEED_ID, DT_PROMOTION)
   AND MONTHS_BETWEEN(SYSDATE, J.END_DATE) < 12
   ORDER BY E.EMPLOYEE_ID;
 ```
-![Image](https://bn1301files.storage.live.com/y4puTKUrjeJD-JHKmxzwEFX229NUEXB3QkW6xl63Hz-O4RF4tXN8Ocgxis82Cl8CL9BJa5sJAOGGzcgRF8h1qOjj3Wan5IWv2zby6jGs8oe8boxmZFWmQgKzSE6CEbD0m096uSd_GDcPqRCknJLBUMfaOTsXUxljr7zJPs1eN7zIfcXHpgGWDC9baKjN0hTK4vx5LvdpqsWP3yXpCk2MDfcWvH3XX_ywY59qw0FendQmdE/3-2.png?psid=1&width=1187&height=613)
+![Image](https://bn1301files.storage.live.com/y4peMM08kak6VkoSQ8EuavTGhlPfbFkR_JhjjLl1BKsg18JPE4X4aj1Tad2CVwGINUofSuWUwwquIWnWpJJdmF-vkiRqJDfwm1ffV5LATSxpX234BqqZ-HcTr251Hec_TlbhMTSpJjpdxw1b7oT08k1MsUkKRHWiEkDDuFUJxUJ__73MO6RNzZn4Q-LLqDX1IGT2_MFS71aAyTPlFlQX14R65X4oHOO-XjzmD1JjR1yWyk/3-3.png?psid=1&width=1185&height=613)
 
 Agora vamos verificar os registros inseridos.
-![Image](https://bn1301files.storage.live.com/y4peMM08kak6VkoSQ8EuavTGhlPfbFkR_JhjjLl1BKsg18JPE4X4aj1Tad2CVwGINUofSuWUwwquIWnWpJJdmF-vkiRqJDfwm1ffV5LATSxpX234BqqZ-HcTr251Hec_TlbhMTSpJjpdxw1b7oT08k1MsUkKRHWiEkDDuFUJxUJ__73MO6RNzZn4Q-LLqDX1IGT2_MFS71aAyTPlFlQX14R65X4oHOO-XjzmD1JjR1yWyk/3-3.png?psid=1&width=1185&height=613)
 
 Ótimo, podemos ver que havia 9 funcionários que estavam dentro de nossas regras definidas
 
