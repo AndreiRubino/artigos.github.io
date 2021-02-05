@@ -1,7 +1,4 @@
 # RESOLVENDO PROBLEMAS SIMPLES E COMPLEXOS COM SUBQUERY
-![Image](https://bn1301files.storage.live.com/y4pskm662y7Sphlq1voKLmdvIv6mvs7nv4FM0SXC1-0rjIC5KlIKRp6c4o6nZzxVjtNia4QtnpFv8X2qRRVkQHfTmyExTaQJM7Wt5NhU8hkcLFjv7dBRlGwy2ILVZffS1ZWk3fiPPiZM9IecaPtZiCkAc71BIneQJ2GTWY-qG149A_IYmzVvPmVRV8ppPdSG_DiVNb8w9Jbbo_o4R5saWTOw612r1ytuA_4qjo8eiM3_tQ/1.png?psid=1&width=542&height=283)
-
-
 Este artigo tem como objetivo descrever as diversas formas de como podemos utilizar subquerys para resolver problemas simples e complexos. As formas abaixo são uteis no dia a dia de cada desenvolvedor/dba.
 
 
@@ -36,6 +33,7 @@ WHERE  E.DEPARTMENT_ID = (SELECT DEPARTMENT_ID  FROM   HR.DEPARTMENTS D
                              WHERE UPPER(D.DEPARTMENT_NAME) = 'SALES') 
 ORDER  BY E.EMPLOYEE_ID;
 ```
+![Image](https://bn1301files.storage.live.com/y4pskm662y7Sphlq1voKLmdvIv6mvs7nv4FM0SXC1-0rjIC5KlIKRp6c4o6nZzxVjtNia4QtnpFv8X2qRRVkQHfTmyExTaQJM7Wt5NhU8hkcLFjv7dBRlGwy2ILVZffS1ZWk3fiPPiZM9IecaPtZiCkAc71BIneQJ2GTWY-qG149A_IYmzVvPmVRV8ppPdSG_DiVNb8w9Jbbo_o4R5saWTOw612r1ytuA_4qjo8eiM3_tQ/1.png?psid=1&width=542&height=283)
 
 2. Buscar o nome do funcionário e do seu Manager desde que eles tenham o mesmo sobrenome.
 Nesse caso iremos criar uma inner query mutilple-row(podem retornar mais de uma linha e coluna), que será utilizada na clausula where pela outer query e irá garantir nossa regra definida, também iremos utilizar outra inner query no formato de coluna na instrução select.
@@ -57,6 +55,7 @@ WHERE  ( E.DEPARTMENT_ID, E.LAST_NAME ) IN
         WHERE  E.MANAGER_ID = M2.EMPLOYEE_ID) 
 ORDER  BY E.EMPLOYEE_ID;
 ```
+![Image](https://bn1301files.storage.live.com/y4pKzwikNPJvoCYGiCOdtj_bL1KZM9hZt6aP7HyFXM_Ua06zeqgAaQE7qQETdPyZVHDBYVfeDSlqgzVTeM66LJb1JuQfh5QOBrn1m6-fNj7CcntQjHviCpp7mBBlfnXQTvGpBP5E8H_LavHOPvdJ_QDCDfeMilpN6iR7KsaIHDrMhl3AnuXf1sziFeA7g61LjshtXrjOcKQtDnZ7wj5p72lxv1txWFKc3QrC9BjsBEretg/2.png?psid=1&width=1231&height=613)
 
 3) Precisamos inserir em uma tabela nova chamada Promotion Employees os funcionários a quais trocaram de setor nos últimos 12 meses e que irão receber uma bonificação de 5% em seu salário. Aqui iremos utilizar a subquery em conjunto com a instrução Insert.
 
@@ -70,6 +69,7 @@ CREATE TABLE HR.PROMOTION_EMPLOYEES (
 	, CONSTRAINT PRM_EMP_EMP_FK FOREIGN KEY(EMPLOYEE_ID) REFERENCES HR.EMPLOYEES(EMPLOYEE_ID)
 );
 ```
+![Image](https://bn1301files.storage.live.com/y4pbJnnvipKhrVI0DoFwwaa9OgN0tHGXIaRDQXK18kc_JwfsJ4BJI5leeAnb3Eco2YlgIYz9qGJHqRX05CVUODYK7Xcyh05mioXC585RfIAwd9UX5Yi9dmA2bqGFtCHeku3lk-NlDQeZZr_ZAI1Bmwfr9PLGExCm3tshu-QqVrJQqWo3w0mobeQyTlm1kvB6YW3w023BENrVXinJgjwml-I-jpDJKL2XvFLU716VxnCaS0/3.png?psid=1&width=1183&height=613)
 
 Agora iremos fazer o insert com subselect obedecendo às regras definidas, que são funcionários a qual trocaram de setor nos últimos 12 meses.
 ```
@@ -83,8 +83,11 @@ INSERT INTO HR.PROMOTION_EMPLOYEES (EMPLOYEED_ID, DT_PROMOTION)
   AND MONTHS_BETWEEN(SYSDATE, J.END_DATE) < 12
   ORDER BY E.EMPLOYEE_ID;
 ```
+![Image](https://bn1301files.storage.live.com/y4puTKUrjeJD-JHKmxzwEFX229NUEXB3QkW6xl63Hz-O4RF4tXN8Ocgxis82Cl8CL9BJa5sJAOGGzcgRF8h1qOjj3Wan5IWv2zby6jGs8oe8boxmZFWmQgKzSE6CEbD0m096uSd_GDcPqRCknJLBUMfaOTsXUxljr7zJPs1eN7zIfcXHpgGWDC9baKjN0hTK4vx5LvdpqsWP3yXpCk2MDfcWvH3XX_ywY59qw0FendQmdE/3-2.png?psid=1&width=1187&height=613)
 
 Agora vamos verificar os registros inseridos.
+![Image](https://bn1301files.storage.live.com/y4peMM08kak6VkoSQ8EuavTGhlPfbFkR_JhjjLl1BKsg18JPE4X4aj1Tad2CVwGINUofSuWUwwquIWnWpJJdmF-vkiRqJDfwm1ffV5LATSxpX234BqqZ-HcTr251Hec_TlbhMTSpJjpdxw1b7oT08k1MsUkKRHWiEkDDuFUJxUJ__73MO6RNzZn4Q-LLqDX1IGT2_MFS71aAyTPlFlQX14R65X4oHOO-XjzmD1JjR1yWyk/3-3.png?psid=1&width=1185&height=613)
+
 Ótimo, podemos ver que havia 9 funcionários que estavam dentro de nossas regras definidas
 
 
@@ -107,6 +110,7 @@ FROM   (SELECT E.FIRST_NAME,
         FROM   HR.EMPLOYEES E) SUBQUERY 
 WHERE  SUBQUERY.SALARY > SUBQUERY.MEDIA_SALARIO_CARGO; 
 ```
+![Image](https://bn1301files.storage.live.com/y4p8xAYOGCRAWBcthUkX7Ry3sA2c6sxI9uHFeusgXwJMd6Rr6Ssk-k1gDMxPKWgQgpd1mEV9qniZ7BwNf9GXEk1ySA3RIa3llbiUv6CaBx128-WcrkEdYJRgKvIx4ZBdzNFLp4gngW8aQ4QQsenupl6XTNDeDCNqcKrxS4WvR9LNLkrGQsllc3M5wXNeTtSbDY88fDWOjd6kFiQjbri0Hy8TR5N1cC7lRLXqA1kCXkUgso/3-4.png?psid=1&width=1187&height=613)
 
 5)	Queremos descobrir os cargos que possuem a média salarial maior do que a média salarial do cargo Finance Manager(FI_MGR). Nesse caso utilizamos a subquery para comparação de valores com a clausula Having.
 ```
