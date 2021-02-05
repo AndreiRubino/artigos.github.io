@@ -2,6 +2,7 @@
 Este artigo tem como objetivo descrever as diversas formas de como podemos utilizar subquerys para resolver problemas simples e complexos. As formas abaixo são uteis no dia a dia de cada desenvolvedor/dba.
 
 
+
 Uma subquery é uma instrução SELECT que está condicionado à outra instrução SQL.
 A subquery é uma instrução muito versátil a qual pode ser utilizada em diversos cenários e servem geralmente para resolver problemas que teriam que ser feitas com 2 ou mais consultas.
 
@@ -9,17 +10,22 @@ Podemos utilizar subquerys em instruções select, insert, update e delete. E ne
 
 Agora vamos esclarecer alguns conceitos e criar um cenário para aplicarmos nossas subquerys.
 
-Outer Query 
+Outer Query
+
 É sempre a query externa, ou seja, a query da esquerda.
 
 Inner Query 
+
 É sempre a query interna, ou seja, a query da direita.
 
 Subquerys Escalares (single-row)
+
 São subquerys que retornam apenas uma linha e uma coluna.
 
 Subquerys Correlacionadas (mutilple rows)
+
 São subquerys que se relacionam com a query externa, e são processados linha a linha.
+
 
 Para realizar nossos testes iremos utilizar o schema HR do banco XE.
 
