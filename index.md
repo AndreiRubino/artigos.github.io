@@ -32,7 +32,7 @@ Para realizar nossos testes iremos utilizar o schema HR do banco XE.
 **Iremos resolver 6 problemas, sendo eles:**
 
 
-1)Buscar os funcionários que pertencem ao departamento Sales, no entanto não sabemos o ID do departamento e/ou o mesmo pode ser alterado um dia. 	
+1)	 Buscar os funcionários que pertencem ao departamento Sales, no entanto não sabemos o ID do departamento e/ou o mesmo pode ser alterado um dia. 	
 Para resolver esse problema iremos criar uma inner query single-row(retorna uma única linha e coluna), que será utilizada na clausula where pela outer query.
 ```
 SELECT * 
